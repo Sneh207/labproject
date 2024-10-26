@@ -1,9 +1,10 @@
+<!-- homepage.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heart Attack Detection</title>
+    <title>BPM Calculator</title>
     <style>
         * {
             margin: 0;
@@ -13,104 +14,132 @@
         }
 
         body {
-            background: #f0f2f5;
-        }
-
-        .navbar {
-            background: #2c3e50;
-            padding: 1rem 2rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .nav-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-
-        .nav-links a:hover {
-            background-color: #34495e;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+            margin-top: 80px;
+            background-repeat:none;
         }
 
         .card {
             background: white;
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            margin: 2rem auto;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
         }
 
         h1 {
             text-align: center;
             margin-bottom: 2rem;
-            color: #2c3e50;
-        }
-
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
             color: #34495e;
-        }
-
-        input[type="number"] {
-            width: 100%;
-            padding: 0.5rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            font-size: 2rem;
+            font-weight: bold;
         }
 
         .btn {
-            background-color: #3498db;
+            background-color: #e74c3c;
             color: white;
             padding: 0.75rem 1.5rem;
             border: none;
-            border-radius: 4px;
+            border-radius: 50px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            font-size: 1rem;
+            display: block;
+            margin: 1.5rem auto 0;
+            transition: all 0.3s ease;
+            width: 100%;
             text-align: center;
         }
 
         .btn:hover {
-            background-color: #2980b9;
+            background-color: #c0392b;
+            transform: scale(1.05);
         }
+
+        input[type="file"] {
+            display: block;
+            margin: 1rem auto;
+            border: 2px dashed #3498db;
+            border-radius: 8px;
+            padding: 1.5rem;
+            cursor: pointer;
+            text-align: center;
+            background-color: #ecf0f1;
+            transition: all 0.3s ease;
+            width: 100%;
+            color: #2980b9;
+            font-size: 1rem;
+        }
+
+        input[type="file"]:hover {
+            background-color: #dce0e3;
+            border-color: #2980b9;
+        }
+
+        .result {
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+
+        h2 {
+            color: #27ae60;
+        }
+
+        h3 {
+            color: #e74c3c;
+        }
+
+        #imagePreview img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 1rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .preview-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
     </style>
 </head>
 <body>
-
-    <div class="container">
-        <div class="card">
-            <h1>Heart Attack Detection from ECG</h1>
-            
-            <form action="/home" method="post">
-                <div class="form-group">
-                    <label for="bpm">Enter BPM:</label>
-                    <input type="number" name="bpm" id="bpm" required>
-                </div>
-                <div class="form-group">
-                    <label for="ecg_file">Upload ECG Graph (CSV/PNG):</label>
-                    <input class="btn" type="file" name="ecg_file" id="ecg_file" required>
-                </div>
-                <button type="submit" class="btn">Analyze</button>
-            </form>
-        </div>
+    <div class="card">
+        <h1>Upload ECG Image</h1>
+        <form action="/result" method="POST" enctype="multipart/form-data">
+            <input id="fileInput" type="file" name="ecg_file" accept="image/*" required>
+            <button class="btn" type="submit">Calculate BPM</button>
+        </form>   
     </div>
+
+    <div class="preview-container">
+        <div id="imagePreview"></div> 
+    </div>
+
+    <script>
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+          const file = event.target.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+              const imageSrc = e.target.result;
+              const imgElement = document.createElement('img');
+              imgElement.src = imageSrc;
+              const previewDiv = document.getElementById('imagePreview');
+              previewDiv.innerHTML = ''; // Clear previous image
+              previewDiv.appendChild(imgElement); // Add new image preview
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+    </script>
 </body>
 </html>
-
