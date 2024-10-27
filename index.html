@@ -1,0 +1,156 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Attack Risk Indicator</title>
+</head>
+<body>
+    <h1>Heart Attack Risk Indicator</h1>
+    <form action="/result" method="POST">
+        <label for="heart_rate">Heart Rate:</label>
+        <input type="number" id="heart_rate" name="heart_rate" required><br>
+
+        <label for="blood_pressure_sys">Blood Pressure (Systolic):</label>
+        <input type="number" id="blood_pressure_sys" name="blood_pressure_sys" required><br>
+
+        <label for="exercise_level">Exercise Level (1-5):</label>
+        <input type="number" id="exercise_level" name="exercise_level" required><br>
+
+        <label for="cholesterol">Cholesterol Level:</label>
+        <input type="number" id="cholesterol" name="cholesterol" required><br>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required><br>
+
+        <label for="sex">Sex (M/F):</label>
+        <input type="text" id="sex" name="sex" required><br>
+
+        <label for="smoking_status">Smoking Status (Yes/No):</label>
+        <input type="text" id="smoking_status" name="smoking_status" required><br>
+
+        <label for="diabetes_status">Diabetes Status (Yes/No):</label>
+        <input type="text" id="diabetes_status" name="diabetes_status" required><br>
+
+        <label for="family_history">Family History of Heart Disease (Parents/Sibling/Others):</label>
+        <input type="text" id="family_history" name="family_history" required><br>
+
+        <label for="weight">Weight (kg):</label>
+        <input type="number" id="weight" name="weight" step="0.01" required><br>
+
+        <label for="height">Height (m):</label>
+        <input type="number" id="height" name="height" step="0.01" required><br>
+
+        <button type="submit">Calculate Risk</button>
+    </form>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Attack Risk Indicator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="number"],
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+        input[type="number"]:focus,
+        input[type="text"]:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        @media (max-width: 600px) {
+            form {
+                padding: 15px;
+            }
+            button {
+                padding: 12px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Heart Attack Risk Indicator</h1>
+    <form action="/result" method="POST">
+        <label for="heart_rate">Heart Rate:</label>
+        <input type="number" id="heart_rate" name="heart_rate" required>
+
+        <label for="blood_pressure_sys">Blood Pressure (Systolic):</label>
+        <input type="number" id="blood_pressure_sys" name="blood_pressure_sys" required>
+
+        <label for="exercise_level">Exercise Level (1-5):</label>
+        <input type="number" id="exercise_level" name="exercise_level" required>
+
+        <label for="cholesterol">Cholesterol Level:</label>
+        <input type="number" id="cholesterol" name="cholesterol" required>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+
+        <label for="sex">Sex (M/F):</label>
+        <input type="text" id="sex" name="sex" required>
+
+        <label for="smoking_status">Smoking Status (Yes/No):</label>
+        <input type="text" id="smoking_status" name="smoking_status" required>
+
+        <label for="diabetes_status">Diabetes Status (Yes/No):</label>
+        <input type="text" id="diabetes_status" name="diabetes_status" required>
+
+        <label for="family_history">Family History of Heart Disease (Parents/Sibling/Others):</label>
+        <input type="text" id="family_history" name="family_history" required>
+
+        <label for="weight">Weight (kg):</label>
+        <input type="number" id="weight" name="weight" step="0.01" required>
+
+        <label for="height">Height (m):</label>
+        <input type="number" id="height" name="height" step="0.01" required>
+
+        <button type="submit">Calculate Risk</button>
+    </form>
+</body>
+</html>
